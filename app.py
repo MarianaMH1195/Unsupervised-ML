@@ -94,7 +94,7 @@ st.sidebar.info("Este dashboard utiliza IA para analizar y clasificar especies d
 
 # --- SECCIONES ---
 if menu == "Dashboard Principal":
-    st.title("📊 Dashboard de Visión General")
+    st.title("Dashboard de Visión General")
     st.markdown("---")
     
     # Métricas clave
@@ -133,7 +133,7 @@ if menu == "Dashboard Principal":
         st.plotly_chart(fig_odor, use_container_width=True)
 
 elif menu == "Análisis Exploratorio (EDA)":
-    st.title("🔍 Análisis Detallado de Características")
+    st.title("Análisis Detallado de Características")
     st.markdown("---")
     
     feature_to_plot = st.selectbox("Seleccione característica para analizar:", df.columns[1:])
@@ -151,12 +151,12 @@ elif menu == "Análisis Exploratorio (EDA)":
         st.plotly_chart(fig_dynamic, use_container_width=True)
 
 elif menu == "Predictor de Especies":
-    st.title("🧠 Inteligencia Artificial: Predictor")
+    st.title("Inteligencia Artificial: Predictor")
     st.markdown("---")
     st.markdown("Complete las características del hongo encontrado para determinar su seguridad.")
     
     # Formulario de entrada
-    with st.expander("📝 Formulario de Características", expanded=True):
+    with st.expander("Formulario de Características", expanded=True):
         c1, c2, c3 = st.columns(3)
         user_inputs = {}
         
@@ -173,7 +173,7 @@ elif menu == "Predictor de Especies":
             else:
                 with c3: user_inputs[col] = st.selectbox(f"{col}", val)
 
-    if st.button("🚀 Ejecutar Predicción con RandomForest"):
+    if st.button("Ejecutar Predicción con RandomForest"):
         input_df = pd.DataFrame([user_inputs])
         
         # Procesamiento para el modelo
