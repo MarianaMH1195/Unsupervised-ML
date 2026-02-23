@@ -82,7 +82,7 @@ model, model_columns, label_encoder = train_model(df)
 
 # --- NAVEGACIÓN LATERAL ---
 st.sidebar.title("Mushroom Intel")
-st.sidebar.markdown("---")
+st.sidebar.markdown("---") # <--- recuadro de nota en la barra lateral de IA
 menu = st.sidebar.radio(
     "Menú Principal",
     ["Dashboard Principal", "Análisis Exploratorio (EDA)", "Predictor de Especies"],
