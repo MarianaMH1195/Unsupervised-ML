@@ -1,61 +1,59 @@
-# Clasificación de Hongos (Mushroom Classification)
+# 🍄 Mushroom Intel Dashboard
 
-Este proyecto consiste en un análisis exploratorio y preprocesamiento de un dataset de hongos para facilitar su clasificación automatizada mediante técnicas de Machine Learning.
+Este proyecto consiste en un análisis avanzado y una aplicación interactiva (Dashboard) diseñada para clasificar especies de hongos como **comestibles** o **venenosos** basándose en sus características físicas. Combina técnicas de Machine Learning con una interfaz de usuario profesional y moderna.
 
-## Estructura del Proyecto
+## 🚀 Aplicación Streamlit (v2)
 
-*   `data/`: Contiene el dataset original (`agaricus-lepiota.data`) y su descripción (`agaricus-lepiota.names`).
-*   `docs/`: Documentación adicional del proyecto.
-*   `notebooks/`: Cuadernos de Jupyter con el análisis de datos.
-    *   `mushroom.ipynb`: Análisis principal que incluye EDA, limpieza y preprocesamiento.
+La joya de la corona de este proyecto es el **Mushroom Intel Dashboard**, una interfaz de alta gama que ofrece:
 
-## Análisis Realizado
-
-El notebook `mushroom.ipynb` realiza las siguientes etapas:
-
-1.  **Carga de Datos**: Importación del dataset con sus respectivos nombres de columnas.
-2.  **Limpieza de Datos**:
-    *   Identificación y manejo de valores nulos.
-    *   Eliminación de la columna `veil-type` por ser constante y no aportar información.
-3.  **Preprocesamiento**:
-    *   Manejo de valores desconocidos en la columna `stalk-root`.
-    *   **One-Hot Encoding**: Aplicado a las características (X) para convertirlas en formato numérico sin jerarquías.
-    *   **Label Encoding**: Aplicado a la variable objetivo (clase) para diferenciar entre comestibles y venenosos.
-4.  **Análisis Exploratorio de Datos (EDA)**:
-    *   Visualización de la distribución de clases.
-    *   Análisis de la relación entre el olor (`odor`) y la toxicidad.
-    *   **Matriz de Correlación de Cramér's V**: Análisis avanzado de asociaciones entre variables categóricas.
-
-## Requisitos
-
-Para ejecutar el notebook, se requieren las siguientes bibliotecas de Python:
-
-*   streamlit
-*   pandas
-*   numpy
-*   matplotlib
-*   seaborn
-*   plotly
-*   scikit-learn
-*   scipy
-
-## Aplicación Streamlit
-
-Este proyecto incluye una aplicación interactiva que permite predecir la comestibilidad de un hongo.
+*   **📊 Dashboard Principal**: Resumen visual con métricas clave y proporciones globales de especies mediante gráficos interactivos.
+*   **🔍 Análisis EDA Dinámico**: Herramienta de exploración que permite visualizar la distribución de cualquier característica del hongo en tiempo real.
+*   **🧠 Predictor con IA**: Un formulario optimizado que utiliza un modelo **RandomForestClassifier** para determinar la toxicidad de un hongo con un alto nivel de confianza.
+*   **🎨 Interfaz Télica**: Diseño personalizado con una paleta de colores moderno (Verde Teal y Naranja), navegación lateral profesional y experiencia de usuario fluida.
 
 ### Cómo ejecutar la aplicación
 
-1.  Instala las dependencias:
+1.  **Instala las dependencias**:
     ```bash
     pip install -r requirements.txt
     ```
-2.  Ejecuta la aplicación desde la raíz del proyecto:
+2.  **Ejecuta el Dashboard**:
     ```bash
     streamlit run app.py
     ```
 
-## Uso del Notebook
+---
+
+## 📂 Estructura del Proyecto
+
+*   `data/`: Contiene el dataset original (`agaricus-lepiota.data`).
+*   `docs/`: Documentación técnica del proyecto.
+*   `notebooks/`: Cuadernos de Jupyter con el análisis de datos original.
+    *   `mushroom.ipynb`: EDA, limpieza, preprocesamiento y matriz de Cramér's V.
+*   `app.py`: Código fuente de la aplicación principal en Streamlit.
+*   `requirements.txt`: Lista de dependencias del proyecto.
+
+## 🧪 Análisis Realizado
+
+El núcleo analítico se basa en el notebook `mushroom.ipynb`, siguiendo estas etapas:
+
+1.  **Limpieza y Preprocesamiento**: Manejo de valores nulos, eliminación de columnas constantes (`veil-type`) y codificación de variables categóricas (One-Hot & Label Encoding).
+2.  **EDA Avanzado**: Análisis de distribuciones y relaciones entre variables como el olor y la clase.
+3.  **Matriz de Cramér's V**: Medición de la asociación entre características categóricas.
+
+## 🛠️ Requisitos
+
+Para asegurar el correcto funcionamiento, se requieren:
+*   `streamlit`
+*   `pandas`
+*   `numpy`
+*   `plotly`
+*   `scikit-learn`
+*   `matplotlib` / `seaborn`
+
+---
+
+## 📝 Uso del Notebook
 
 1.  Asegúrate de tener instaladas las dependencias.
-2.  Abre el notebook `notebooks/mushroom.ipynb` en Jupyter o Google Colab.
-3.  Ejecuta las celdas para reproducir el análisis.
+2.  Abre `notebooks/mushroom.ipynb` en Jupyter o Google Colab para revisar el análisis estadístico detallado.
