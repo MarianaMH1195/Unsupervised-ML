@@ -30,6 +30,7 @@ El notebook `mushroom.ipynb` realiza las siguientes etapas:
 
 Para ejecutar el notebook, se requieren las siguientes bibliotecas de Python:
 
+*   streamlit
 *   pandas
 *   numpy
 *   matplotlib
@@ -38,7 +39,22 @@ Para ejecutar el notebook, se requieren las siguientes bibliotecas de Python:
 *   scikit-learn
 *   scipy
 
-## Uso
+## Aplicación Streamlit
+
+Este proyecto incluye una aplicación interactiva que permite predecir la comestibilidad de un hongo.
+
+### Cómo ejecutar la aplicación
+
+1.  Instala las dependencias:
+    ```bash
+    pip install -r requirements.txt
+    ```
+2.  Ejecuta la aplicación desde la raíz del proyecto:
+    ```bash
+    streamlit run app.py
+    ```
+
+## Uso del Notebook
 
 1.  Asegúrate de tener instaladas las dependencias.
 2.  Abre el notebook `notebooks/mushroom.ipynb` en Jupyter o Google Colab.
