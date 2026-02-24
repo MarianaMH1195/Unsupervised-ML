@@ -1,15 +1,14 @@
-# 🍄 Mushroom Intel Dashboard
+# 🍄 Mushroom Intel: Clasificación Avanzada de Hongos
 
-Este proyecto consiste en un análisis avanzado y una aplicación interactiva (Dashboard) diseñada para clasificar especies de hongos como **comestibles** o **venenosos** basándose en sus características físicas. Combina técnicas de Machine Learning con una interfaz de usuario profesional y moderna.
+![Mushroom Intel Banner](docs/mushroom_banner.png)
 
-## 🚀 Aplicación Streamlit (v2)
+## 🚀 Visión General
+Este proyecto implementa una solución completa de Machine Learning para la clasificación de hongos entre comestibles y venenosos. Utiliza técnicas de vanguardia como la imputación por vecinos más cercanos (KNN) y modelos de ensamble para garantizar la máxima seguridad en la predicción.
 
-La joya de la corona de este proyecto es el **Mushroom Intel Dashboard**, una interfaz de alta gama que ofrece:
-
-*   **📊 Dashboard Principal**: Resumen visual con métricas clave y proporciones globales de especies mediante gráficos interactivos.
-*   **🔍 Análisis EDA Dinámico**: Herramienta de exploración que permite visualizar la distribución de cualquier característica del hongo en tiempo real.
-*   **🧠 Predictor con IA**: Un formulario optimizado que utiliza un modelo **RandomForestClassifier** para determinar la toxicidad de un hongo con un alto nivel de confianza.
-*   **🎨 Interfaz Télica**: Diseño personalizado con una paleta de colores moderno (Verde Teal y Naranja), navegación lateral profesional y experiencia de usuario fluida.
+### 🌟 Puntos Clave
+*   **🧠 Inteligencia Predictiva**: Pipeline de preprocesamiento con `KNNImputer` y `OrdinalEncoder` sincronizado con el análisis experimental.
+*   **📊 Dashboard Interactivo**: Visualización dinámica de datos utilizando Streamlit y Plotly.
+*   **🎨 Identidad de Marca**: Interfaz personalizada con banner, logo y favicon propios.
 
 ## Estructura del Proyecto
 ```text
