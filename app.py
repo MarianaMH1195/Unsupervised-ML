@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, OrdinalEncoder
+from sklearn.impute import KNNImputer
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -60,25 +61,48 @@ def load_data():
     df = pd.read_csv("data/agaricus-lepiota.data", names=columns)
     
     # Preprocesamiento según el notebook
-    df['stalk-root'] = df['stalk-root'].replace('?', 'unknown')
+    df['stalk-root'] = df['stalk-root'].replace('?', np.nan)
     df_clean = df.drop('veil-type', axis=1) # Siempre es constante
-    return df_clean
+    return df_clean, columns
 
-df = load_data()
+df, original_columns = load_data()
 
 # --- MODELO ---
 @st.cache_resource
 def train_model(data):
     X = data.drop('class', axis=1)
     y = data['class']
+    
+    # Encoding de la variable objetivo
     le = LabelEncoder()
     y_encoded = le.fit_transform(y)
-    X_encoded = pd.get_dummies(X)
+    
+    # Preprocesamiento de características (Ordinal -> KNNImputer)
+    # Guardamos los encoders por columna para poder transformar nuevos datos
+    encoders = {}
+    X_encoded = X.copy()
+    for col in X.columns:
+        oe = OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1)
+        # Ajustamos solo con los valores que NO son NaN
+        non_nan_mask = X[col].notna()
+        if non_nan_mask.any():
+            oe.fit(X.loc[non_nan_mask, [col]])
+            X_encoded.loc[non_nan_mask, col] = oe.transform(X.loc[non_nan_mask, [col]]).flatten()
+        X_encoded[col] = pd.to_numeric(X_encoded[col])
+        encoders[col] = oe
+        
+    # Imputación KNN
+    imputer = KNNImputer(n_neighbors=5)
+    X_imputed = imputer.fit_transform(X_encoded)
+    X_final = pd.DataFrame(X_imputed, columns=X.columns)
+    
+    # Entrenamiento
     model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X_encoded, y_encoded)
-    return model, X_encoded.columns, le
+    model.fit(X_final, y_encoded)
+    
+    return model, X.columns, le, encoders, imputer
 
-model, model_columns, label_encoder = train_model(df)
+model, features, label_encoder, feature_encoders, knn_imputer = train_model(df)
 
 # --- NAVEGACIÓN LATERAL ---
 st.sidebar.title("Mushroom Intel")
@@ -173,17 +197,24 @@ elif menu == "Predictor de Especies":
             else:
                 with c3: user_inputs[col] = st.selectbox(f"{col}", val)
 
-    if st.button("Ejecutar Predicción con RandomForest"):
+    if st.button("Ejecutar Predicción con KNN + RandomForest"):
         input_df = pd.DataFrame([user_inputs])
         
-        # Procesamiento para el modelo
-        input_encoded = pd.get_dummies(input_df)
-        full_input = pd.DataFrame(columns=model_columns).fillna(0)
-        full_input = pd.concat([full_input, input_encoded], axis=0).fillna(0)
-        full_input = full_input[model_columns]
+        # Procesamiento para el modelo (mismo flujo que el entrenamiento)
+        input_encoded = input_df.copy()
+        for col in features:
+            oe = feature_encoders[col]
+            # Si el usuario seleccionó 'nan' (que no debería en el selector actual, pero por consistencia)
+            if input_df[col].iloc[0] == 'nan' or pd.isna(input_df[col].iloc[0]):
+                input_encoded[col] = np.nan
+            else:
+                input_encoded[col] = oe.transform(input_df[[col]]).flatten()[0]
         
-        prediction = model.predict(full_input)
-        prob = model.predict_proba(full_input)
+        # Imputación KNN sobre la entrada (aunque el selector no tenga NaNs ahora, permite escalabilidad)
+        input_imputed = knn_imputer.transform(input_encoded)
+        
+        prediction = model.predict(input_imputed)
+        prob = model.predict_proba(input_imputed)
         res_label = label_encoder.inverse_transform(prediction)[0]
         
         st.markdown("---")
