@@ -6,9 +6,10 @@
 Este proyecto implementa una solución completa de Machine Learning para la clasificación de hongos entre comestibles y venenosos. Utiliza técnicas de vanguardia como la imputación por vecinos más cercanos (KNN) y modelos de ensamble para garantizar la máxima seguridad en la predicción.
 
 ### 🌟 Puntos Clave
-*   **🧠 Inteligencia Predictiva**: Pipeline de preprocesamiento con `KNNImputer` y `OrdinalEncoder` sincronizado con el análisis experimental.
-*   **📊 Dashboard Interactivo**: Visualización dinámica de datos utilizando Streamlit y Plotly.
-*   **🎨 Identidad de Marca**: Interfaz personalizada con banner, logo y favicon propios.
+*   **🧠 Inteligencia Predictiva**: Pipeline avanzado con `KNNImputer` y `OrdinalEncoder` para un manejo preciso de datos faltantes.
+*   **📊 Dashboard de Alta Gama**: Interfaz interactiva con navegación lateral y visualizaciones dinámicas de Plotly.
+*   **✨ UX Intuitiva**: Atributos técnicos traducidos a lenguaje humano (ej. "Aroma a Almendra" en lugar de "odor: a").
+*   **🎨 Branding Completo**: Experiencia visual profesional con banner transparente, logo oficial y favicon personalizado.
 
 ## Estructura del Proyecto
 ```text
@@ -25,9 +26,10 @@ Unsupervised-ML/
 ```
 
 ## Características de la Aplicación
-- **Preprocesamiento Inteligente**: Uso de `KNNImputer` para manejar valores faltantes en la característica `stalk-root`, basándose en los 5 vecinos más cercanos.
-- **Modelado Robusto**: Clasificación mediante `RandomForestClassifier` optimizado.
-- **Visualización Interactiva**: Gráficos dinámicos con Plotly para análisis de hábitat, color y olor.
+- **Preprocesamiento Inteligente**: Uso de `KNNImputer` (k=5) para una imputación de datos coherente con el análisis científico.
+- **Interfaz Humana**: Selectores optimizados con etiquetas descriptivas en lugar de códigos alfanuméricos crípticos.
+- **Seguridad en la Predicción**: Modelo entrenado con `RandomForest` alcanzando altos niveles de precisión y confianza.
+- **Visualización Progresiva**: Gráficos de distribución global y perfil de características para una exploración EDA profunda.
 
 ## Instalación y Uso
 
