@@ -118,6 +118,7 @@ st.sidebar.info("Este dashboard utiliza IA para analizar y clasificar especies d
 
 # --- SECCIONES ---
 if menu == "Dashboard Principal":
+    st.image("docs/mushroom_banner.png", use_container_width=True)
     st.title("Dashboard de Visión General")
     st.markdown("---")
     
