@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 # Configuración de la página
 st.set_page_config(
     page_title="Mushroom Intel Dashboard",
-    page_icon="🍄",
+    page_icon="docs/mushroom_favicon.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -105,7 +105,7 @@ def train_model(data):
 model, features, label_encoder, feature_encoders, knn_imputer = train_model(df)
 
 # --- NAVEGACIÓN LATERAL ---
-st.sidebar.title("Mushroom Intel")
+st.sidebar.image("docs/mushroom_logo.png", use_container_width=True)
 st.sidebar.markdown("---") # <--- recuadro de nota en la barra lateral de IA
 menu = st.sidebar.radio(
     "Menú Principal",
@@ -118,6 +118,7 @@ st.sidebar.info("Este dashboard utiliza IA para analizar y clasificar especies d
 
 # --- SECCIONES ---
 if menu == "Dashboard Principal":
+    st.image("docs/mushroom_banner.png", use_container_width=True)
     st.title("Dashboard de Visión General")
     st.markdown("---")
     
