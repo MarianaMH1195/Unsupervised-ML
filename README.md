@@ -8,7 +8,7 @@ Este proyecto implementa una solución completa de Machine Learning para la clas
 ### Puntos Clave
 *   **🧠 Inteligencia Predictiva**: Pipeline avanzado con `KNNImputer` y `OrdinalEncoder` para un manejo preciso de datos faltantes.
 *   **📊 Dashboard de Alta Gama**: Interfaz interactiva con navegación lateral y visualizaciones dinámicas de Plotly.
-*   **✨ UX Intuitiva**: Atributos técnicos traducidos a lenguaje humano (ej. "Aroma a Almendra" en lugar de "odor: a").
+*   **✨ Fácil e Intuitivo**: Los menús ahora muestran descripciones claras en español (ej. "Almendra", "Bosque") en lugar de códigos técnicos (ej. "a", "d").
 *   **🎨 Branding Completo**: Experiencia visual profesional con banner transparente, logo oficial y favicon personalizado.
 
 ## Estructura del Proyecto
