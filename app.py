@@ -190,7 +190,12 @@ elif menu == "Predictor de Especies":
         columns_list.remove('class')
         
         for i, col in enumerate(columns_list):
-            val = sorted(df[col].unique())
+            # Obtenemos valores únicos y manejamos NaNs para evitar error en sorted()
+            unique_vals = df[col].unique()
+            val = sorted([str(x) for x in unique_vals if pd.notna(x)])
+            if pd.isna(unique_vals).any():
+                val.append("nan")
+            
             if i % 3 == 0:
                 with c1: user_inputs[col] = st.selectbox(f"{col}", val)
             elif i % 3 == 1:
