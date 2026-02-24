@@ -11,27 +11,45 @@ La joya de la corona de este proyecto es el **Mushroom Intel Dashboard**, una in
 *   **🧠 Predictor con IA**: Un formulario optimizado que utiliza un modelo **RandomForestClassifier** para determinar la toxicidad de un hongo con un alto nivel de confianza.
 *   **🎨 Interfaz Télica**: Diseño personalizado con una paleta de colores moderno (Verde Teal y Naranja), navegación lateral profesional y experiencia de usuario fluida.
 
-### Cómo ejecutar la aplicación
+## Estructura del Proyecto
+```text
+Unsupervised-ML/
+├── data/                       # Dataset original y procesado
+│   └── agaricus-lepiota.data
+├── notebooks/                  # Análisis exploratorio y prototipado
+│   └── mushroom.ipynb
+├── docs/                       # Documentación adicional e imágenes
+├── app.py                      # Aplicación principal (Streamlit)
+├── requirements.txt            # Dependencias del proyecto
+├── .gitignore                  # Configuración de archivos excluidos
+└── README.md                   # Documentación principal
+```
 
-1.  **Instala las dependencias**:
+## Características de la Aplicación
+- **Preprocesamiento Inteligente**: Uso de `KNNImputer` para manejar valores faltantes en la característica `stalk-root`, basándose en los 5 vecinos más cercanos.
+- **Modelado Robusto**: Clasificación mediante `RandomForestClassifier` optimizado.
+- **Visualización Interactiva**: Gráficos dinámicos con Plotly para análisis de hábitat, color y olor.
+
+## Instalación y Uso
+
+1.  **Clonar el repositorio**:
+    ```bash
+    git clone https://github.com/Bootcamp-Data-Analyst/Unsupervised-ML.git
+    cd Unsupervised-ML
+    ```
+
+2.  **Instalar dependencias**:
     ```bash
     pip install -r requirements.txt
     ```
-2.  **Ejecuta el Dashboard**:
+
+3.  **Ejecutar la aplicación**:
     ```bash
     streamlit run app.py
     ```
 
 ---
-
-## 📂 Estructura del Proyecto
-
-*   `data/`: Contiene el dataset original (`agaricus-lepiota.data`).
-*   `docs/`: Documentación técnica del proyecto.
-*   `notebooks/`: Cuadernos de Jupyter con el análisis de datos original.
-    *   `mushroom.ipynb`: EDA, limpieza, preprocesamiento y matriz de Cramér's V.
-*   `app.py`: Código fuente de la aplicación principal en Streamlit.
-*   `requirements.txt`: Lista de dependencias del proyecto.
+*Desarrollado como parte del proyecto de análisis de aprendizaje no supervisado y clasificación.*
 
 ## 🧪 Análisis Realizado
 
