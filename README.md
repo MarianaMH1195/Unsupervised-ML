@@ -1,11 +1,11 @@
-# 🍄 Mushroom Intel: Clasificación Avanzada de Hongos
+# Mushroom Intel: Clasificación Avanzada de Hongos
 
 ![Mushroom Intel Banner](docs/mushroom_banner.png)
 
-## 🚀 Visión General
+## Visión General
 Este proyecto implementa una solución completa de Machine Learning para la clasificación de hongos entre comestibles y venenosos. Utiliza técnicas de vanguardia como la imputación por vecinos más cercanos (KNN) y modelos de ensamble para garantizar la máxima seguridad en la predicción.
 
-### 🌟 Puntos Clave
+### Puntos Clave
 *   **🧠 Inteligencia Predictiva**: Pipeline avanzado con `KNNImputer` y `OrdinalEncoder` para un manejo preciso de datos faltantes.
 *   **📊 Dashboard de Alta Gama**: Interfaz interactiva con navegación lateral y visualizaciones dinámicas de Plotly.
 *   **✨ UX Intuitiva**: Atributos técnicos traducidos a lenguaje humano (ej. "Aroma a Almendra" en lugar de "odor: a").
