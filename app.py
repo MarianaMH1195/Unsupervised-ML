@@ -105,7 +105,7 @@ def train_model(data):
 model, features, label_encoder, feature_encoders, knn_imputer = train_model(df)
 
 # --- NAVEGACIÓN LATERAL ---
-st.sidebar.title("Mushroom Intel")
+st.sidebar.image("docs/mushroom_logo.png", use_container_width=True)
 st.sidebar.markdown("---") # <--- recuadro de nota en la barra lateral de IA
 menu = st.sidebar.radio(
     "Menú Principal",
