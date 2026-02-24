@@ -7,6 +7,32 @@ from sklearn.impute import KNNImputer
 import plotly.express as px
 import plotly.graph_objects as go
 
+# --- CONFIGURACIÓN DE ETIQUETAS (Intuición) ---
+ATTR_LABELS = {
+    "cap-shape": {"b": "Campana", "c": "Cónico", "x": "Convexo", "f": "Plano", "k": "Relieve", "s": "Hundido"},
+    "cap-surface": {"f": "Fibroso", "g": "Surcos", "y": "Escamoso", "s": "Liso"},
+    "cap-color": {"n": "Marrón", "b": "Beige", "c": "Canela", "g": "Gris", "r": "Verde", "p": "Rosa", "u": "Púrpura", "e": "Rojo", "w": "Blanco", "y": "Amarillo"},
+    "bruises": {"t": "Sí", "f": "No"},
+    "odor": {"a": "Almendra", "l": "Anís", "c": "Creosota", "y": "Pescado", "f": "Fétido", "m": "Mohoso", "n": "Ninguno", "p": "Pungente", "s": "Especiado"},
+    "gill-attachment": {"a": "Adherida", "d": "Descendente", "f": "Libre", "n": "Escotada"},
+    "gill-spacing": {"c": "Cerca", "w": "Apretada", "d": "Distante"},
+    "gill-size": {"b": "Ancha", "n": "Estrecha"},
+    "gill-color": {"k": "Negro", "n": "Marrón", "b": "Beige", "h": "Chocolate", "g": "Gris", "r": "Verde", "o": "Naranja", "p": "Rosa", "u": "Púrpura", "e": "Rojo", "w": "Blanco", "y": "Amarillo"},
+    "stalk-shape": {"e": "Ensanchado", "t": "Afilado"},
+    "stalk-root": {"b": "Bulbosa", "c": "Maza", "u": "Copa", "e": "Igual", "z": "Rizomorfos", "r": "Enraizada", "nan": "Faltante"},
+    "stalk-surface-above-ring": {"f": "Fibroso", "y": "Escamoso", "k": "Sedoso", "s": "Liso"},
+    "stalk-surface-below-ring": {"f": "Fibroso", "y": "Escamoso", "k": "Sedoso", "s": "Liso"},
+    "stalk-color-above-ring": {"n": "Marrón", "b": "Beige", "c": "Canela", "g": "Gris", "o": "Naranja", "p": "Rosa", "e": "Rojo", "w": "Blanco", "y": "Amarillo"},
+    "stalk-color-below-ring": {"n": "Marrón", "b": "Beige", "c": "Canela", "g": "Gris", "o": "Naranja", "p": "Rosa", "e": "Rojo", "w": "Blanco", "y": "Amarillo"},
+    "veil-type": {"p": "Parcial", "u": "Universal"},
+    "veil-color": {"n": "Marrón", "o": "Naranja", "w": "Blanco", "y": "Amarillo"},
+    "ring-number": {"n": "Ninguno", "o": "Uno", "t": "Dos"},
+    "ring-type": {"c": "Telaraña", "e": "Evanescente", "f": "Acampanado", "l": "Grande", "n": "Ninguno", "p": "Colgante", "s": "Envainado", "z": "Zona"},
+    "spore-print-color": {"k": "Negro", "n": "Marrón", "b": "Beige", "h": "Chocolate", "r": "Verde", "o": "Naranja", "u": "Púrpura", "w": "Blanco", "y": "Amarillo"},
+    "population": {"a": "Abundante", "c": "Agrupada", "n": "Numerosa", "s": "Dispersa", "v": "Varios", "y": "Solitaria"},
+    "habitat": {"g": "Pastos", "l": "Hojas", "m": "Prados", "p": "Senderos", "u": "Urbano", "w": "Residuos", "d": "Bosques"}
+}
+
 # Configuración de la página
 st.set_page_config(
     page_title="Mushroom Intel Dashboard",
@@ -197,11 +223,11 @@ elif menu == "Predictor de Especies":
                 val.append("nan")
             
             if i % 3 == 0:
-                with c1: user_inputs[col] = st.selectbox(f"{col}", val)
+                with c1: user_inputs[col] = st.selectbox(f"{col}", val, format_func=lambda x: ATTR_LABELS.get(col, {}).get(x, x))
             elif i % 3 == 1:
-                with c2: user_inputs[col] = st.selectbox(f"{col}", val)
+                with c2: user_inputs[col] = st.selectbox(f"{col}", val, format_func=lambda x: ATTR_LABELS.get(col, {}).get(x, x))
             else:
-                with c3: user_inputs[col] = st.selectbox(f"{col}", val)
+                with c3: user_inputs[col] = st.selectbox(f"{col}", val, format_func=lambda x: ATTR_LABELS.get(col, {}).get(x, x))
 
     if st.button("Ejecutar Predicción con KNN + RandomForest"):
         input_df = pd.DataFrame([user_inputs])
